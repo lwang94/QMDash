@@ -22,3 +22,4 @@ Before we can dive into the above statement, we first need to start with the Sch
 
 $$ [-\frac{ℏ}{2m}\frac{\partial^2 }{\partial x^2} + V(x,t)]\Psi (x,t) = iℏ\frac{\partial }{\partial t}\Psi (x,t) $$
 
+This is called a partial differential equation and by solving for $/Psi (x,t)$, we can determine the probability that a particle will be at position `x` at time `t` (note: $/Psi^2 (x,t)$, NOT $/Psi (x,t)$ is the probability density function which is what the dashboard visualizes).
