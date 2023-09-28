@@ -19,5 +19,5 @@ The dashboard simulates the `time evolution for a quantum superposition of eigen
 
 ### The Schrodinger Equation
 Before we can dive into the above statement, we first need to start with the Schrodinger Equation shown below:
-$-\frac{ℏ}{2m}
+$-\frac{ℏ}{2m}$
 
