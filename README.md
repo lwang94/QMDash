@@ -37,14 +37,22 @@ and $\varphi(t)$ is the solution to the ordinary differential equation:
 $$ iℏ\frac{\partial }{\partial t}\varphi (t) = E\varphi(t) $$
 
 ### Time Evolution
-For potentials that do not depend on time, we can solve for $\varphi(t)$ easily:
+We can then solve for $\varphi(t)$ easily:
 
 $$ \varphi(t) =  e^{\frac{-iE_{n}t}{ℏ}} $$
 
-### Quantum Superposition
+In the simulation shown on the dashboard, we see how the probability density changes over time based on the above function.
+
+### Infinite Square Well
+The dashboard simulates the probability densities of particles in the Infinite Square Well potential which is defined by: 
+
+$$ V(x) = \begin{cases}
+0 & \text{ if } \ x > 0\ or\ x < a\\
+\infty & \text{ if } \ x<= 0\ or\ x>= a
+\end{cases} $$
 
 ### Eigenstates
 
-### Infinite Square Well
+### Quantum Superposition
 
 ### Table of Constants and Eigenstates
