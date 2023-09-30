@@ -44,12 +44,14 @@ $$ \varphi(t) =  e^{\frac{-iE_{n}t}{ℏ}} $$
 In the simulation shown on the dashboard, we see how the probability density changes over time based on the above function.
 
 ### Infinite Square Well
-The dashboard simulates the probability densities of particles in the Infinite Square Well potential which is defined by: 
+In this dashboard, we are concerned with particles in an `Infinite Square Well` potential. This potential is defined by: 
 
 $$ V(x) = \begin{cases}
 0 & \text{ if } \ x > 0\ or\ x < a\\
 \infty & \text{ if } \ x<= 0\ or\ x>= a
 \end{cases} $$
+
+The solution for $\psi(x)$ then becomes:
 
 ### Eigenstates
 
