@@ -37,6 +37,9 @@ and $\varphi(t)$ is the solution to the ordinary differential equation:
 $$ iℏ\frac{\partial }{\partial t}\varphi (t) = E\varphi(t) $$
 
 ### Time Evolution
+For potentials that do not depend on time, we can solve for $\varphi(t)$ easily:
+
+$$ \varphi(t) =  e^{\frac{-iE_{n}t}{ℏ}} $$
 
 ### Quantum Superposition
 
