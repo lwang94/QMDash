@@ -1,4 +1,6 @@
 from dash import Dash, html, dcc, Output, Input, callback, dash_table
+import dash_bootstrap_components as dbc
+import numpy as np
 from callbacks_graph import callbacks_graph
 from callbacks_widgets import callbacks_widgets
 
@@ -12,6 +14,10 @@ app.layout = html.Div([
     ),
     html.Div(
         children=[
+            dcc.ConfirmDialog(
+                id="invalid_custom_function",
+                message="Invalid Custom Function"
+            ),
             html.Div(
                 children=[
                     html.Pre("BOUND", style={"font-size": "18px"}),
@@ -19,7 +25,7 @@ app.layout = html.Div([
                         id="bound_input",
                         type="number",
                         placeholder="bound",
-                        value=0.7,
+                        value=0.5,
                         min=0.05,
                         max=0.95,
                         step=0.05,
@@ -94,11 +100,11 @@ app.layout = html.Div([
                         ],
                         data=[
                             {
-                                "components_table_c": 1/2,
+                                "components_table_c": 1/np.sqrt(2),
                                 "components_table_eigenstate": 1
                             },
                             {
-                                "components_table_c": 1/2,
+                                "components_table_c": 1/np.sqrt(2),
                                 "components_table_eigenstate": 2
                             }
                         ],
@@ -108,6 +114,27 @@ app.layout = html.Div([
                     html.Button(
                         "Add Eigenstate",
                         id="add_eigenstate_button"
+                    ),
+                    dcc.Input(
+                        id="custom_function_input",
+                        type="text",
+                        placeholder="custom function",
+                        style={"margin-top": "20%"}
+                    ),
+                    dbc.Tooltip(
+                        [
+                            html.P("ALLOWED VARIABLES: "),
+                            html.P("x (the variable the function acts on)"),
+                            html.P("bound (a constant representing the bound of the infinite square well)"),
+                            html.P("NOTE: The function will be normalized such that it's integral is 1")
+                        ],
+                        target="custom_function_input",
+                        placement="left",
+                        style={"font-size": "10px"}
+                    ),
+                    html.Button(
+                        "Submit",
+                        id="custom_function_submit"
                     )
                 ],
                 className='two columns'

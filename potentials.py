@@ -15,3 +15,26 @@ class Inf_Square_Well:
     
     def time_dependence(self, t, E):
         return np.exp(-1j*E*t/u.H_BAR)
+
+    def constants_to_approx_custom_func(self, expression):
+        function = u.expression_to_function(expression, self.x)
+        func = np.where(self.x<self.a, function, 0)
+
+        func_pdf = func ** 2
+        func_probabilities = [
+            u.find_area(
+                self.x[i], 
+                self.x[i+1], 
+                func_pdf[i], 
+                func_pdf[i+1]
+            ) for i in range(len(self.x) - 1)
+        ]
+        norm_func = func/np.sqrt(np.sum(func_probabilities))
+
+        c = {}
+        for i in range(1, 36):
+            wf = self.wavefunction(i)
+            norm = np.dot(wf, wf)
+            c[i] = np.dot(norm_func, wf) / norm
+        
+        return c

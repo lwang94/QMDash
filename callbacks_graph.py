@@ -20,6 +20,11 @@ def callbacks_graph(app):
     )
     def animate_probabilities(bound, mass, end_time, n_particles, components):
         # components check
+        components = [
+            component for component in components 
+            if component["components_table_c"] != "" 
+            and component["components_table_eigenstate"] != ""
+        ]
         c_sum = 0
         for component in components:
             if component["components_table_eigenstate"] % 1 != 0:
@@ -30,13 +35,14 @@ def callbacks_graph(app):
                     text=["Eigenstates can only be integer values"],
                     textposition="top center"
                 ))
-            c_sum += component["components_table_c"]
-        if c_sum != 1:
+            c_sum += component["components_table_c"] ** 2
+            
+        if c_sum > 1.00000001 or c_sum < 0.9999999:
             return go.Figure(go.Scatter(
                 x=[0],
                 y=[0],
                 mode="markers+text",
-                text=["Make sure all constants add to 1"],
+                text=["Make sure the square of all constants add to 1"],
                 textposition="top center" 
             ))
 
@@ -57,7 +63,7 @@ def callbacks_graph(app):
             eigenstate_dict[comp["components_table_eigenstate"]] = u.eigenstate_dictionary(
                 inf_square_well,
                 comp["components_table_eigenstate"],
-                np.sqrt(comp["components_table_c"]),
+                comp["components_table_c"],
                 m,
                 t
             )

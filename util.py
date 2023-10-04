@@ -1,4 +1,5 @@
 import numpy as np
+import sympy as sym
 
 # h_bar
 H_BAR = 1.05457e-34
@@ -28,3 +29,10 @@ def eigenstate_dictionary(potential, n, c, m, t):
         "y": potential.wavefunction(n),
         "t": potential.time_dependence(t, potential.energy(n, m))
     }
+
+
+# create function from expression
+def expression_to_function(expr, axis):
+    x = sym.symbols("x")
+    ex = sym.sympify(expr)
+    return np.array([float(ex.subs(x, index)) for index in axis])
