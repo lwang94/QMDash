@@ -53,11 +53,11 @@ $$ V(x) = \begin{cases}
 
 The solution for $\psi_n(x)$ then becomes:
 
-$$ \psi_n(x) = \sqrt{\frac{2}{a}}sin(frac{n\pi}{a}x) where n = 0, 1, 2... $$
+$$ \psi_n(x) = \sqrt{\frac{2}{a}}sin(frac{n\pi}{a}x) \: where \: n = 0, 1, 2... $$
 
 and the solution for $\Psi_n(x,t)$ is:
 
-$$ \Psi_n(x,t) = \sqrt{\frac{2}{a}}sin(frac{n\pi}{a}x)e^{\frac{-iE_{n}t}{ℏ}} where n = 0, 1, 2... $$
+$$ \Psi_n(x,t) = \sqrt{\frac{2}{a}}sin(frac{n\pi}{a}x)e^{\frac{-iE_{n}t}{ℏ}} \: where \: n = 0, 1, 2... $$
 
 See https://sciencing.com/particle-in-a-box-13722579.html for more details.
 
