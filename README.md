@@ -51,9 +51,18 @@ $$ V(x) = \begin{cases}
 \infty & \text{ if } \ x<= 0\ or\ x>= a
 \end{cases} $$
 
-The solution for $\psi(x)$ then becomes:
+The solution for $\psi_n(x)$ then becomes:
+
+$$ \psi_n(x) = \sqrt{\frac{2}{a}}sin(frac{n\pi}{a}x) where n = 0, 1, 2... $$
+
+and the solution for $\Psi_n(x,t)$ is:
+
+$$ \Psi_n(x,t) = \sqrt{\frac{2}{a}}sin(frac{n\pi}{a}x)e^{\frac{-iE_{n}t}{ℏ}} where n = 0, 1, 2... $$
+
+See https://sciencing.com/particle-in-a-box-13722579.html for more details.
 
 ### Eigenstates
+The above equation for $\Psi_n(x,t)$ represents the eigenstates of the particle in an `Infinite Square Well`. Eigenstates are an important concept in quantum mechanics as they are states of the wavefunction in which the probability density does not change with time (Try this for yourself! Remove all rows except 1 in the table and set its value of `C` to 1. Then see what happens).
 
 ### Quantum Superposition
 

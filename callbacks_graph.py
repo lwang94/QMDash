@@ -95,21 +95,6 @@ def callbacks_graph(app):
             )
             choices.append(choice)
 
-        # define initial plot data
-        data = [{
-            "x": x,
-            "y": probability_densities[0].real,
-            "mode": "markers",
-            "marker": dict(opacity=0.15)
-        }]
-        for i in range(n_particles):
-            data.append({
-                "x": [choices[0][i]],
-                "y": [i * probability_densities[0].real.max() / 50],
-                "mode": "markers",
-                "marker": dict(size=12)
-            })
-        
         # define layout
         layout = {
             "xaxis": dict(range=[x.min(), x.max()], autorange=False),
@@ -144,12 +129,29 @@ def callbacks_graph(app):
         # define frames
         frames = []
         for i in range(len(t)):
-            data = [{
-                "x": x,
-                "y": probability_densities[i].real,
-                "mode": "markers",
-                "marker": dict(opacity=0.15)
-            }]
+            data = [
+                {
+                    "x": x,
+                    "y": probability_densities[i].real,
+                    "mode": "markers",
+                    "marker": dict(opacity=0.15)
+                },
+                {
+                    "x": [a, a],
+                    "y": [0, probability_densities[0].real.max()],
+                    "mode": "lines",
+                    "opacity": 0.5,
+                    "marker": dict(color="red")
+
+                },
+                {
+                    "x": [x[1], x[1]],
+                    "y": [0, probability_densities[0].real.max()],
+                    "mode": "lines",
+                    "opacity": 0.5,
+                    "marker": dict(color="red")
+                }
+            ]
             for j in range(n_particles):
                 data.append({
                     "x": [choices[i][j]],
