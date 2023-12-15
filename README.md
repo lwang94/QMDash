@@ -53,11 +53,11 @@ $$ V(x) = \begin{cases}
 
 The solution for $\psi_n(x)$ then becomes:
 
-$$ \psi_n(x) = \sqrt{\frac{2}{a}}sin(\frac{n\pi}{a}x) \ where \ n = 0, 1, 2... $$
+$$ \psi_n(x) = \sqrt{\frac{2}{a}}sin(\frac{n\pi}{a}x) \ \ where \ \ n = 0, 1, 2... $$
 
 and the solution for $\Psi_n(x,t)$ is:
 
-$$ \Psi_n(x,t) = \sqrt{\frac{2}{a}}sin(\frac{n\pi}{a}x)e^{\frac{-iE_{n}t}{ℏ}} \ where \ n = 0, 1, 2... $$
+$$ \Psi_n(x,t) = \sqrt{\frac{2}{a}}sin(\frac{n\pi}{a}x)e^{\frac{-iE_{n}t}{ℏ}} \ \ where \ \ n = 0, 1, 2... $$
 
 See https://sciencing.com/particle-in-a-box-13722579.html for more details.
 
@@ -67,7 +67,7 @@ The above equation for $\Psi_n(x,t)$ represents the eigenstates of the particle 
 ### Quantum Superposition
 However, these eigenstates are not the only solutions to the Schrodinger Equation. Any [linear combination](https://en.wikipedia.org/wiki/Linear_combination#:~:text=In%20mathematics%2C%20a%20linear%20combination,a%20and%20b%20are%20constants).) of the above eigenstates are also valid solutions to the Schrodinger Equation. Therefore, any linear combination of eigenstates are valid wavefunctions (so long as their probability density is equal to 1). 
 
-$$\Psi(x,t) = \sum_{n=1}^{\infty}c_n\sqrt{\frac{2}{a}}sin(\frac{n\pi}{a}x)e^{\frac{-iE_{n}t}{ℏ}} \ where \sum_{n=1}^{\infty}|c_n|^{2} = 1 $$
+$$\Psi(x,t) = \sum_{n=1}^{\infty}c_n\sqrt{\frac{2}{a}}sin(\frac{n\pi}{a}x)e^{\frac{-iE_{n}t}{ℏ}} \ \  where \ \ \sum_{n=1}^{\infty}|c_n|^{2} = 1 $$
 
 This is called Quantum Superposition and it is a fundamental principle in quantum physics. It is why multiple measurements of the same quantum system can yield different results: the system is in a *superposition* of different eigenstates and the act of measurement collapses it to a single state. The coefficient in front of the eigenstate represents the probability that the system will collapse to that particular eigenstate.
 
