@@ -65,5 +65,10 @@ See https://sciencing.com/particle-in-a-box-13722579.html for more details.
 The above equation for $\Psi_n(x,t)$ represents the eigenstates of the particle in an `Infinite Square Well`. Eigenstates are an important concept in quantum mechanics as they are states of the wavefunction in which the probability density does not change with time (Try this for yourself! Remove all rows except 1 in the table and set its value of `C` to 1. Then see what happens).
 
 ### Quantum Superposition
+However, these eigenstates are not the only solutions to the Schrodinger Equation. Any [linear combination](https://en.wikipedia.org/wiki/Linear_combination#:~:text=In%20mathematics%2C%20a%20linear%20combination,a%20and%20b%20are%20constants).) of the above eigenstates are also valid solutions to the Schrodinger Equation. Therefore, any linear combination of eigenstates are valid wavefunctions (so long as their probability density is equal to 1). 
+
+$$\Psi(x,t) = \sum_{n=1}^{\infty}c_n\sqrt{\frac{2}{a}}sin(\frac{n\pi}{a}x)e^{\frac{-iE_{n}t}{ℏ}} \ where \sum_{n=1}^{\infty}|c_n|^{2} = 1 $$
+
+This is called Quantum Superposition and it is a fundamental principle in quantum physics. It is why multiple measurements of the same quantum system can yield different results: the system is in a *superposition* of different eigenstates and the act of measurement collapses it to a single state. The coefficient in front of the eigenstate represents the probability that the system will collapse to that particular eigenstate.
 
 ### Table of Constants and Eigenstates
