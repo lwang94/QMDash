@@ -1,10 +1,12 @@
 from dash import Dash, html, dcc, Output, Input, callback, dash_table
+from dash.dash_table.Format import Format, Scheme, Trim
+from dash_extensions.enrich import DashProxy, BlockingCallbackTransform
 import dash_bootstrap_components as dbc
 import numpy as np
 from callbacks_graph import callbacks_graph
 from callbacks_widgets import callbacks_widgets
 
-app = Dash(__name__)
+app = DashProxy(transforms=[BlockingCallbackTransform(timeout=5)])
 
 app.layout = html.Div([
     html.H1(
@@ -78,32 +80,45 @@ app.layout = html.Div([
                         style_cell={"textAlign": "center"},
                         style_cell_conditional=[
                             {
+                                "if": {"column_id": "components_table_c_squared"},
+                                "width": "35%"
+                            },
+                            {
                                 "if": {"column_id": "components_table_c"},
-                                "width": "50%"
+                                "width": "35%"
                             },
                             {
                                 "if": {"column_id": "components_table_eigenstate"},
-                                "width": "50%"
+                                "width": "30%"
                             }
                         ],
                         columns=[
                             {
-                                "name": "C",
-                                "id": "components_table_c",
-                                "type": "numeric"
+                                "name": "c²",
+                                "id": "components_table_c_squared",
+                                "type": "numeric",
+                                "format": Format(precision=3, scheme=Scheme.fixed, trim=Trim.yes)
                             },
                             {
-                                "name": "EIGENSTATE",
+                                "name": "c",
+                                "id": "components_table_c",
+                                "type": "numeric",
+                                "format": Format(precision=3, scheme=Scheme.fixed, trim=Trim.yes)
+                            },
+                            {
+                                "name": "ψₙ",
                                 "id": "components_table_eigenstate",
                                 "type": "numeric"
                             }
                         ],
                         data=[
                             {
+                                "components_table_c_squared": 1/2,
                                 "components_table_c": 1/np.sqrt(2),
                                 "components_table_eigenstate": 1
                             },
                             {
+                                "components_table_c_squared": 1/2,
                                 "components_table_c": 1/np.sqrt(2),
                                 "components_table_eigenstate": 2
                             }

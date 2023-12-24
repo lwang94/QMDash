@@ -16,6 +16,22 @@ def callbacks_widgets(app):
         if n_clicks > 0:
             rows.append({c["id"]: "" for c in columns})
         return rows
+    
+
+    @callback(
+        Output("components_table", "data", allow_duplicate=True),
+        Input("components_table", "data"),
+        State("components_table", "data_previous"),
+        prevent_initial_call=True
+    )
+    def update_table(rows, prev_rows):
+        for i, row in enumerate(rows):
+            if row['components_table_c'] != prev_rows[i]['components_table_c']:
+                row['components_table_c_squared'] = row['components_table_c'] ** 2
+            elif row['components_table_c_squared'] != prev_rows[i]['components_table_c_squared']:
+                row['components_table_c'] = np.sqrt(row['components_table_c_squared'])
+        return rows
+
 
 
     @callback(
@@ -60,7 +76,7 @@ def callbacks_widgets(app):
         ])
         norm = 1 / np.sqrt(norm)
         return [
-            {
+            {   "components_table_c_squared": (norm * approx_func_constants[eigenstate]) ** 2,
                 "components_table_c": norm * approx_func_constants[eigenstate],
                 "components_table_eigenstate": eigenstate
             } for eigenstate in approx_func_constants

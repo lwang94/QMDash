@@ -15,8 +15,8 @@ def callbacks_graph(app):
         Input("mass_input", "value"),
         Input("end_time_input", "value"),
         Input("n_particles_input", "value"),
-        Input("components_table", "data")
-
+        Input("components_table", "data"),
+        blocking=True
     )
     def animate_probabilities(bound, mass, end_time, n_particles, components):
         # components check
@@ -35,7 +35,7 @@ def callbacks_graph(app):
                     text=["Eigenstates can only be integer values"],
                     textposition="top center"
                 ))
-            c_sum += component["components_table_c"] ** 2
+            c_sum += component["components_table_c_squared"]
             
         if c_sum > 1.00000001 or c_sum < 0.9999999:
             return go.Figure(go.Scatter(
