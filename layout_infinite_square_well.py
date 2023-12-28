@@ -3,8 +3,6 @@ from dash.dash_table.Format import Format, Scheme, Trim
 from dash_extensions.enrich import DashProxy, BlockingCallbackTransform
 import dash_bootstrap_components as dbc
 import numpy as np
-from callbacks_graph import callbacks_graph
-from callbacks_widgets import callbacks_widgets
 
 
 def isw_layout():
