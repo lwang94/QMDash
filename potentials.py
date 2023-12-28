@@ -32,9 +32,33 @@ class Inf_Square_Well:
         norm_func = func/np.sqrt(np.sum(func_probabilities))
 
         c = {}
-        for i in range(1, 36):
+        for i in range(1, 21):
             wf = self.wavefunction(i)
             norm = np.dot(wf, wf)
             c[i] = np.dot(norm_func, wf) / norm
         
         return c
+
+
+class FreeParticle:
+
+    def __init__(self, x):
+        self.x = x
+
+    
+    def wavefunction(self, p):
+        wf = np.zeros(len(self.x), dtype='complex128')
+        for momentum in p:
+            wf += np.exp(1j*momentum*x/H_BAR)
+        return wf
+
+
+    def approximate_localization(self, a):
+        wf_x = np.where((self.x > -a) & (self.x < a), 1/np.sqrt(2 * a), 0)
+        
+        w = 1 / (1 / len(self.x))
+        p = np.fft.fftfreq(self.x.shape[0]) * w
+
+        wf_p = np.fft.fft(wf_x)
+
+        return self.x, wf_x, p, wf_p

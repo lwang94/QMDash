@@ -78,7 +78,7 @@ def callbacks_graph(app):
                     * eigenstate_dict[eigenstate]["y"]
                     * eigenstate_dict[eigenstate]["t"][time_index]
                 )
-            probability_densities.append(np.conjugate(wf) *wf)
+            probability_densities.append(np.conjugate(wf) * wf)
         
         # simulate probability of measuring particle at (x, t)
         positions = [(x[i + 1] + x[i]) / 2 for i in range(len(x) - 1)]
