@@ -5,6 +5,8 @@ import dash_bootstrap_components as dbc
 import numpy as np
 from callbacks_graph_infinite_square_well import callbacks_graph
 from callbacks_widgets_infinite_square_well import callbacks_widgets
+
+import callbacks_graph_free_particle as cgfp
 from layout_infinite_square_well import isw_layout
 
 app = DashProxy(transforms=[BlockingCallbackTransform(timeout=5)])
@@ -19,23 +21,25 @@ app.layout = html.Div([
             ),
             html.Div(
                 children=[
-                    dcc.ConfirmDialog(
-                        id="invalid_custom_function",
-                        message="Invalid Custom Function"
+                    html.Div(
+                        children=[
+                            dcc.Graph(id="momentum_position_graph"),
+                            html.Pre("LOCALIZATION", style={"font-size": "18px"}),
+                            dcc.Slider(
+                                0.03,
+                                0.78,
+                                0.05,
+                                value=0.43,
+                                marks=None,
+                                id="localization_slider"
+                            )
+                        ],
+                        style={"margin-left": "8%"},
+                        className="five columns"
                     ),
                     html.Div(
                         children=[
-                            html.Pre("BOUND", style={"font-size": "18px"}),
-                            dcc.Input(
-                                id="bound_input",
-                                type="number",
-                                placeholder="bound",
-                                value=0.5,
-                                min=0.05,
-                                max=0.95,
-                                step=0.05,
-                                style={"width": "75%"}
-                            ),
+                            dcc.Graph(id="probability_graph"),
                             html.Pre("NUM PARTICLES", style={"font-size": "18px", "padding-top": "2%"}),
                             dcc.Input(
                                 id="n_particles_input",
@@ -45,16 +49,7 @@ app.layout = html.Div([
                                 style={"width": "75%"}
                             )
                         ],
-                        style={"margin-left": "8%"},
-                        className="one half columns"
-                    ),
-                    html.Div(
-                        children=[
-                            dcc.Graph(
-                                id="probability_graph"
-                            )
-                        ],
-                        className="seven columns"
+                        className="five columns"
                     )
                 ],
                 className="one row"
@@ -62,6 +57,7 @@ app.layout = html.Div([
         ])
 ])
 
+cgfp.callbacks_graph(app)
 # callbacks_graph(app)
 # callbacks_widgets(app)
 
