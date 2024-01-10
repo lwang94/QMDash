@@ -1,9 +1,8 @@
-from dash import Dash, html, dcc, Output, Input, callback
+from dash import Output, Input, callback
 from potentials import Inf_Square_Well
 import util as u
 import numpy as np
 import plotly.graph_objects as go
-import plotly.express as px
 
 
 def callbacks_graph(app):

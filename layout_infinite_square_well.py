@@ -1,11 +1,11 @@
-from dash import Dash, html, dcc, Output, Input, callback, dash_table
+from dash import html, dcc, dash_table
 from dash.dash_table.Format import Format, Scheme, Trim
-from dash_extensions.enrich import DashProxy, BlockingCallbackTransform
 import dash_bootstrap_components as dbc
+
 import numpy as np
 
 
-def isw_layout():
+def l_isw():
     return html.Div([
         html.H1(
             children="Infinite Square Well",
