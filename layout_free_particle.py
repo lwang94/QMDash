@@ -3,7 +3,7 @@ from dash import html, dcc
 def l_fp():
     return html.Div([
             html.H1(
-                children="Free Particle",
+                children="Uncertainty Principle",
                 style={"textAlign": "center"},
                 className="one row"
             ),

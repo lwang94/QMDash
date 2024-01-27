@@ -53,7 +53,7 @@ def callbacks_graph(app):
         inf_square_well = Inf_Square_Well(a, x)
 
         # define t and m
-        t = np.apply_along_axis(u.hartree_time, 0, np.linspace(0, end_time, 50))
+        t = np.apply_along_axis(u.hartree_time, 0, np.linspace(0, end_time, 25))
         m = u.hartree_mass(mass)
 
         # create eigenstate dictionary
@@ -119,7 +119,16 @@ def callbacks_graph(app):
                     buttons=[dict(
                         label="Play",
                         method="animate",
-                        args=[None]
+                        args=[
+                            None,
+                            {
+                                'frame': 
+                                {
+                                    'duration': 750,
+                                    'redraw': True
+                                }
+                            }
+                        ]
                     )]
                 )
             ]
@@ -172,6 +181,7 @@ def callbacks_graph(app):
                 "visible": True,
                 "xanchor": "right"
             },
+            'font': {'color': 'white'},
             "transition": {"duration": 0.1, "easing": "cubic-in-out"},
             "pad": {"t": 20},
             "len": 0.9,

@@ -1,4 +1,4 @@
-from dash import html
+from dash import html, dcc
 from dash_extensions.enrich import DashProxy, BlockingCallbackTransform
 
 import callbacks_graph_infinite_square_well as cg_isw
@@ -10,9 +10,10 @@ from layout_free_particle import l_fp
 app = DashProxy(transforms=[BlockingCallbackTransform(timeout=5)])
 
 app.layout = html.Div([
-    l_isw(),
-    html.Hr(),
-    l_fp()
+    dcc.Tabs([
+        dcc.Tab(label='Infinite Square Well', children=[l_isw()]),
+        dcc.Tab(label='Uncertainty Principle', children=[l_fp()])
+    ])
 ])
 
 cg_fp.callbacks_graph(app)

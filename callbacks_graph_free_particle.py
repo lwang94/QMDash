@@ -22,37 +22,59 @@ def callbacks_graph(app):
         choices_x = np.random.choice(x, size=num_particles, p=prob_x/np.sum(prob_x))
         choices_p = np.random.choice(p, size=num_particles, p=prob_p/np.sum(prob_p))
 
-        t = 21
+        t = 41
         disp = np.zeros(num_particles)
         height = 0 * choices_x
         heights = [0 * choices_x]
         for i in range(t):
             if i > (t / 4) and i < (3 * t / 4):
-                disp = -choices_p / 21
+                disp = -choices_p / t
             else:
-                disp = choices_p / 21
+                disp = choices_p / t
             height += disp
             heights.append(height.copy())
         layout = {
             "xaxis": dict(range=[min(x), max(x)], autorange=False),
-            "yaxis": dict(range=[-max(choices_p), max(choices_p)], autorange=False),
-            "title": "Free Particle",
+            "yaxis": dict(range=[-8, 8], autorange=False),
+            'showlegend': False,
+            "margin": {
+                "l": 10,
+                "r": 10,
+                "b": 10,
+                "t": 10
+            },
             "updatemenus": [dict(
                 type="buttons",
                 buttons=[dict(
                     label="Play",
                     method="animate",
-                    args=[None]
+                    args=[
+                        None,
+                        {
+                            'frame': 
+                            {
+                                'duration': 75,
+                                'redraw': False
+                            },
+                            'transition': {
+                                'duration': 200,
+                                'easing': 'cube-in-out'
+                            }
+                        }
+                    ]
                 )]
             )]
         }
         frames = []
         for i in range(t):
-            data = [{
-                "x": choices_x,
-                "y": heights[i],
-                "mode": "markers"
-            }]
+            data = []
+            for j in range(len(choices_x)):
+                data.append({
+                    'x': [choices_x[j]],
+                    'y': [heights[i][j]],
+                    'mode': 'markers',
+                    "marker": dict(size=8)
+                })
             frames.append({
                 "data": data,
                 "name": str(i)
@@ -67,6 +89,7 @@ def callbacks_graph(app):
                 "visible": True,
                 "xanchor": "right"
             },
+            'font': {'color': 'white'},
             "transition": {"duration": 0},
             "pad": {"b": 10, "t": 50},
             "len": 0.9,
