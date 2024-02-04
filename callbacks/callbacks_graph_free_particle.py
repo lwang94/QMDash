@@ -1,6 +1,6 @@
 from dash import Output, Input, callback
-from potentials import FreeParticle
-import util as u
+from util.potentials import FreeParticle
+import util.util as u
 import numpy as np
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots

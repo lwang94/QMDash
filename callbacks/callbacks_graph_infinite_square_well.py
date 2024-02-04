@@ -1,6 +1,6 @@
 from dash import Output, Input, callback
-from potentials import Inf_Square_Well
-import util as u
+from util.potentials import Inf_Square_Well
+import util.util as u
 import numpy as np
 import plotly.graph_objects as go
 
@@ -96,12 +96,19 @@ def callbacks_graph(app):
 
         # define layout
         layout = {
-            "xaxis": dict(range=[x.min(), x.max()], autorange=False),
+            "xaxis": dict(
+                range=[x.min(), x.max()], 
+                # showticklabels=False,
+                title='x',
+                autorange=False,
+            ),
             "yaxis": dict(
                 range=[
-                    -probability_densities[0].real.max(),
+                    -probability_densities[0].real.max() // 20,
                     probability_densities[0].real.max()
                 ],
+                showticklabels=False,
+                title="|𝚿(x,t)|²",
                 autorange=False
             ),
             "showlegend": False,
@@ -142,7 +149,7 @@ def callbacks_graph(app):
                     "x": x,
                     "y": probability_densities[i].real,
                     "mode": "markers",
-                    "marker": dict(opacity=0.15)
+                    "marker": dict(opacity=0.5)
                 },
                 {
                     "x": [a, a],
@@ -163,7 +170,7 @@ def callbacks_graph(app):
             for j in range(n_particles):
                 data.append({
                     "x": [choices[i][j]],
-                    "y": [j * probability_densities[0].real.max() / 50],
+                    "y": [j * probability_densities[0].real.max() / 250],
                     "mode": "markers",
                     "marker": dict(size=12)
                 })
@@ -186,7 +193,7 @@ def callbacks_graph(app):
             "pad": {"t": 20},
             "len": 0.9,
             "x": 0.05,
-            "y": 0,
+            "y": -0.1,
             "steps": [{
                 "args": [
                     [t[i]],

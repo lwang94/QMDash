@@ -1,5 +1,5 @@
 import numpy as np
-import util as u
+import util.util as u
 
 class Inf_Square_Well:
     

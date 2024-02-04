@@ -1,7 +1,7 @@
 from dash import Dash, html, dcc, Output, Input, State, callback
 import numpy as np
-import util as u
-from potentials import Inf_Square_Well
+import util.util as u
+from util.potentials import Inf_Square_Well
 
 
 def callbacks_widgets(app):

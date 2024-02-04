@@ -1,11 +1,11 @@
 from dash import html, dcc
 from dash_extensions.enrich import DashProxy, BlockingCallbackTransform
 
-import callbacks_graph_infinite_square_well as cg_isw
-import callbacks_widgets_infinite_square_well as cw_isw
-import callbacks_graph_free_particle as cg_fp
-from layout_infinite_square_well import l_isw
-from layout_free_particle import l_fp
+import callbacks.callbacks_graph_infinite_square_well as cg_isw
+import callbacks.callbacks_widgets_infinite_square_well as cw_isw
+import callbacks.callbacks_graph_free_particle as cg_fp
+from layout.layout_infinite_square_well import l_isw
+from layout.layout_free_particle import l_fp
 
 app = DashProxy(transforms=[BlockingCallbackTransform(timeout=5)])
 
